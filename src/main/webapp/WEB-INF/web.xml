@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 스프링이 제공하는 DispatcherServlet을 FrontController로 설정하는 파일 --> 
+<web-app>
+
+  <display-name>Spring JavaConfig Sample</display-name>
+
+  <servlet>
+    <servlet-name>mvc</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> <!-- 스프링이 제공하는 DispatcherServlet을 FrontController로 설정 --> 
+    <init-param>
+      <param-name>contextClass</param-name> <!-- IoC를 위한 bean 공장 설정 -->
+      <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+    </init-param>
+    <init-param> <!-- WebMvcContextConfiguration 클래스를 보고 DispatcherServlet을 설정한다. -->
+      <param-name>contextConfigLocation</param-name>
+      <param-value>kr.or.connect.mvcexam.config.WebMvcContextConfiguration</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>mvc</servlet-name>
+    <url-pattern>/</url-pattern> <!-- "/" 즉, 모든 요청에 대해  서블릿 네임 mvc가 실행 되도록하는 설정-->
+  </servlet-mapping>
+
+</web-app>
